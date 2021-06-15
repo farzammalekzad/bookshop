@@ -13,7 +13,10 @@ import { PopularComponent } from './pages/home/popular/popular.component';
 import { LastestnewsComponent } from './pages/home/lastestnews/lastestnews.component';
 import { BrandsComponent } from './pages/home/brands/brands.component';
 import {SlidersService} from './services/sliders.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import {Interceptor} from './utils/interceptor';
 
 @NgModule({
   declarations: [
@@ -26,14 +29,23 @@ import {HttpClientModule} from '@angular/common/http';
     NewComponent,
     PopularComponent,
     LastestnewsComponent,
-    BrandsComponent
+    BrandsComponent,
+    ContactUsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [SlidersService],
+  providers: [
+    SlidersService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

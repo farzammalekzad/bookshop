@@ -12,7 +12,7 @@ export class SlidersService {
   constructor(private http: HttpClient) { }
 
   public getSliders(): Observable<SliderModel[]> {
-    return this.http.get<SliderModel[]>('http://localhost:3000/slider');
+    return this.http.get<SliderModel[]>('slider');
   }
 
   public getCurrentSlider() {

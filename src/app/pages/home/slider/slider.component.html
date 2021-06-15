@@ -3,9 +3,9 @@
 <!--  ==========  -->
 <div class="fullwidthbanner-container">
   <div class="fullwidthbanner">
-    <ul *ngIf="sliderData">
+    <ul *ngIf="sliderData !== null && sliderData.length>0">
       <li data-transition="premium-random" data-slotamount="3" *ngFor="let slide of sliderData">
-        <img src="http://localhost:3000/{{slide.sliderImageUrl}}" alt="slider img" width="1400" height="377" />
+        <img [src]="domain + slide.sliderImageUrl" alt="slider img" width="1400" height="377" />
 
         <!-- baloons -->
         <div class="caption lft ltt"
